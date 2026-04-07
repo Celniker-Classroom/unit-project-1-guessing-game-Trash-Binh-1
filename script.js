@@ -13,6 +13,13 @@ let wins = 0;
 let numScore = 0;
 let avgScore = document.getElementById("avgScore");
 let playGuess = 0; /// guesses kept while playing
+
+//prompt player name
+let tuffName = prompt("What is your name?");
+const nameFix = tuffName.charAt(0).toUpperCase() + tuffName.slice(1).toLowerCase();
+
+
+
 // play button function
 function beginPlay(){
 // enable guess btn
@@ -27,21 +34,21 @@ if(document.getElementById("e").checked){
     let range = 3;
     randNum = Math.floor(Math.random()*range) + 1; 
     // change text to easy guess
-    document.getElementById('msg').textContent= "Guess the number between 1-3";}
+    document.getElementById('msg').textContent= "Guess the number between 1-3, " + nameFix;}
 //medium mode
 if(document.getElementById("m").checked){
     //generate the number
     let range = 10;
     randNum = Math.floor(Math.random()*range) + 1; 
     // change text to med guess
-    document.getElementById('msg').textContent= "Guess the number between 1-10";}
+    document.getElementById('msg').textContent= "Guess the number between 1-10, " + nameFix;}
 //hard mode
 if(document.getElementById("h").checked){
     //generate the number
     let range = 100;
     randNum = Math.floor(Math.random()*range) + 1; 
     // change text to hard guess
-    document.getElementById('msg').textContent= "Guess the number between 1-100";}
+    document.getElementById('msg').textContent= "Guess the number between 1-100, " + nameFix;}
 }
     
 // Guess the number function
