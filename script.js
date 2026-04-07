@@ -8,7 +8,11 @@ let randNum;
 let guessBtn = document.getElementById("guessBtn");
     guessBtn.addEventListener("click", guessValue);
 let giveUpBtn = document.getElementById("giveUpBtn");
-
+let totalWins = document.getElementById("wins");
+let wins = 0;
+let numScore = 0;
+let avgScore = document.getElementById("avgScore");
+let playGuess = 0; /// guesses kept while playing
 // play button function
 function beginPlay(){
 // enable guess btn
@@ -40,7 +44,7 @@ if(document.getElementById("h").checked){
     document.getElementById('msg').textContent= "Guess the number between 1-100";}
 }
     
-// Guess the number
+// Guess the number function
 function guessValue(){
 // universal var
 let temp;
@@ -52,7 +56,13 @@ if(playerGuess === randNum){
      document.getElementById('msg').textContent = "Correct!";
     // Disable guess button
    guessBtn.disabled = true;
-} 
+   // enable play button
+    playBtn.disabled = false;
+   // increase Total Wins score
+    winUpdate();
+    // Average score Update
+   scoreUpdate();
+}
 // low guess
 else if(playerGuess < randNum){
     // hot cold warm
@@ -67,6 +77,8 @@ if(diff <= 2){
     else if(diff > 5){
     temp = "Cold";
     }
+    // Update number of guesses
+    playGuess = playGuess + 1;
     // change text to low
     document.getElementById('msg').textContent = "Too Low! " + "(" + temp + ")";
 }
@@ -83,7 +95,21 @@ if(diff <= 2){
     else if(diff > 5){
     temp = "Cold";
     }
+    // Update number of guesses
+    playGuess = playGuess + 1;
     // change text to high
      document.getElementById('msg').textContent = "Too High!" + "(" + temp + ")";
 } 
+}
+
+//function to update total wins
+function winUpdate(){
+    wins++;
+    totalWins.innerText = "Total wins: " + wins;
+}
+
+//function to update total scores
+function scoreUpdate(){
+    numScore = (numScore+playGuess)/totalWins;
+    avgScore.innerText = "Average Score: " + numScore;
 }
