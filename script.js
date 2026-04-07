@@ -5,16 +5,15 @@ btn.addEventListener("click", beginPlay);
 
 //universial functions
 let randNum;
-let playerGuess = document.getElementById("guess").value;
-
+let guessBtn = document.getElementById("guessBtn");
+    guessBtn.addEventListener("click", guessValue);
+let giveUpBtn = document.getElementById("giveUpBtn");
 
 // play button function
 function beginPlay(){
 // enable guess btn
-let guessBtn = document.getElementById("guessBtn");
 guessBtn.disabled = false;
 //enable give up button
-let giveUpBtn = document.getElementById("giveUpBtn");
 giveUpBtn.disabled = false;
 //disable play button
 btn.disabled = true;
@@ -42,9 +41,49 @@ if(document.getElementById("h").checked){
 }
     
 // Guess the number
-    // if(playerGuess.value === randNum){
-    //     // change text to easy guess win
-    //     document.getElementById('msg').textContent= "Correct";
-    //     //Disable guess button
-    //     guessBtn.disabled = true;
-    // }
+function guessValue(){
+// universal var
+let temp;
+let playerGuess = Number(document.getElementById("guess").value);
+let diff;
+// correct guess
+if(playerGuess === randNum){
+    // change text to correct
+     document.getElementById('msg').textContent = "Correct!";
+    // Disable guess button
+   guessBtn.disabled = true;
+} 
+// low guess
+else if(playerGuess < randNum){
+    // hot cold warm
+    // hot cold warm
+diff = Math.abs((playerGuess - randNum))   
+if(diff <= 2){
+    temp = "Hot";
+    }
+    else if(diff <=5){
+    temp = "Warm";
+    }
+    else if(diff > 5){
+    temp = "Cold";
+    }
+    // change text to low
+    document.getElementById('msg').textContent = "Too Low! " + "(" + temp + ")";
+}
+// high guess
+else if(playerGuess > randNum){
+    // hot cold warm
+diff = Math.abs((playerGuess - randNum))   
+if(diff <= 2){
+    temp = "Hot";
+    }
+    else if(diff <=5){
+    temp = "Warm";
+    }
+    else if(diff > 5){
+    temp = "Cold";
+    }
+    // change text to high
+     document.getElementById('msg').textContent = "Too High!" + "(" + temp + ")";
+} 
+}
