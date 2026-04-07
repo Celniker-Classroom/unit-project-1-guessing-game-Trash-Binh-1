@@ -8,9 +8,20 @@ btn.addEventListener("click", beginPlay());
 // play button function
 function beginPlay(){
 
+// enable 
 // easy level
-if(document.getElementsByName('e').checked){
+if(document.getElementsByName('e')[0].checked){
+// enable guess btn
+let guessBtn = document.getElementById("guessBtn");
+guessBtn.disabled = false;
+
+const giveUpBtn = document.getElementById("giveUpBtn");
+giveUpBtn.disabled = false;
+//generate the number
     let range = 3;
-    Math.floor(Math.random())*range + 1; // generates the number
-    document.querySelector('e');}
-}
+    let randNum = Math.floor(Math.random()*range) + 1; 
+// change text
+document.getElementById('msg').textContent= "Guess the number between 1-3";
+// Guess the number
+
+}}
