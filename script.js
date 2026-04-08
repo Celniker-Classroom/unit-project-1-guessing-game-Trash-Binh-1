@@ -66,8 +66,6 @@ if(playerGuess === randNum){
    guessBtn.disabled = true;
    // enable play button
     playBtn.disabled = false;
-   // increase Total Wins score
-    winUpdate();
     // Average score Update
    scoreUpdate();
 }
@@ -110,14 +108,10 @@ if(diff <= 2){
 } 
 }
 
-//function to update total wins
-function winUpdate(){
-    wins++;
-    totalWins.innerText = "Total wins: " + wins;
-}
-
-//function to update total scores
+//function to update total scores and wins
 function scoreUpdate(){
     numScore = (numScore* wins +playGuess)/(wins+1);
+    wins++;
     avgScore.innerText = "Average Score: " + numScore;
+    totalWins.innerText = "Total wins: " + wins;
 }
