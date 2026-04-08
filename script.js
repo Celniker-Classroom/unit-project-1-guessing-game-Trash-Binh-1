@@ -1,7 +1,9 @@
 
-// button select
+// play button select
 let btn = document.getElementById("playBtn");
 btn.addEventListener("click", beginPlay);
+
+
 
 //universial functions
 let randNum;
@@ -19,7 +21,25 @@ let playGuess = 0;
 let tuffName = prompt("What is your name?");
 const nameFix = tuffName.charAt(0).toUpperCase() + tuffName.slice(1).toLowerCase();
 
+// current dates and suffixes
+let now = new Date();
+let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+let monthName = months[now.getMonth()];
+let date = now.getDate();
+    if((date === 1) || (date === 21) || (date === 31)){
+        date = date +"st";
+    } else if ((date === 2) || (date === 22) ){
+        date = date +"nd";
+    } else if ((date === 3) || (date === 23)){
+        date = date+"rd";
+    } else{
+        date = date+"th";
+    }
+let year = now.getFullYear();
 
+
+let currentDate = document.getElementById("date");
+currentDate.textContent = "It is the " + date + " of " + monthName + " in " + year+".";
 
 // play button function
 function beginPlay(){
@@ -116,7 +136,7 @@ function scoreUpdate(){
     totalGuess += playGuess
 
     let finalAvgScore = totalGuess/wins;
-    avgScore.innerText = "Average Score: " + finalAvgScore;
+    avgScore.innerText = "Average Score: " + finalAvgScore.toFixed(2);
     totalWins.innerText = "Total wins: " + wins;
     playGuess = 0;
 }
