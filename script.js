@@ -60,7 +60,7 @@ let diff;
 // correct guess
 if(playerGuess === randNum){
     // change text to correct
-     document.getElementById('msg').textContent = "Correct!";
+     document.getElementById('msg').textContent = "Correct " + nameFix + "!";
     // Disable guess button
    guessBtn.disabled = true;
    // enable play button
