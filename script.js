@@ -65,9 +65,9 @@ if(playerGuess === randNum){
     // Disable guess button
    guessBtn.disabled = true;
    // enable play button
-    playBtn.disabled = false;
+    btn.disabled = false;
    // Update number of guesses
-    playGuess = playGuess + 1;
+    playGuess++;
     // Average score Update
    scoreUpdate();
 }
