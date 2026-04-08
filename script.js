@@ -17,6 +17,8 @@ let wins = 0;
 let avgScore = document.getElementById("avgScore");
 let totalGuess = 0;
 let playGuess = 0;
+//update userboard
+
 //record timer
 let start = new Date().getTime();
 let elapsedTime = 0;
@@ -108,6 +110,8 @@ if(playerGuess === randNum){
    scoreUpdate();
    // update average and fastest time
    timerCalc();
+   // update the leaderboard
+   leaderboardUpdate();
 }
 // low guess
 else if(playerGuess < randNum){
@@ -188,4 +192,9 @@ function timerCalc(){
 
     }
     document.getElementById('fastest').textContent = "Fastest Game: " + min + " seconds";
+}
+
+// //function to update the leaderboard
+function leaderboardUpdate(){
+
 }
