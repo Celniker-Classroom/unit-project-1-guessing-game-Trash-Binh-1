@@ -10,6 +10,7 @@ let guessBtn = document.getElementById("guessBtn");
 let giveUpBtn = document.getElementById("giveUpBtn");
 let totalWins = document.getElementById("wins");
 let wins = 0;
+//averages
 let numScore = 0;
 let avgScore = document.getElementById("avgScore");
 let playGuess = 0; /// guesses kept while playing
@@ -117,6 +118,6 @@ function winUpdate(){
 
 //function to update total scores
 function scoreUpdate(){
-    numScore = (numScore+playGuess)/totalWins;
+    numScore = (numScore* wins +playGuess)/(wins+1);
     avgScore.innerText = "Average Score: " + numScore;
 }
