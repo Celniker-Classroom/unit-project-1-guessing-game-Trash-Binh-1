@@ -17,11 +17,9 @@ let avgScore = document.getElementById("avgScore");
 let totalGuess = 0;
 let playGuess = 0;
 
-//prompt player name
-let tuffName = prompt("What is your name?");
-const nameFix = tuffName.charAt(0).toUpperCase() + tuffName.slice(1).toLowerCase();
 
 // current dates and suffixes
+function timeUpdate(){
 let now = new Date();
 let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 let monthName = months[now.getMonth()];
@@ -37,9 +35,24 @@ let date = now.getDate();
     }
 let year = now.getFullYear();
 
+// current time in seconds
+
+let seconds = now.getSeconds();
 
 let currentDate = document.getElementById("date");
-currentDate.textContent = "It is the " + date + " of " + monthName + " in " + year+".";
+currentDate.textContent = "It is the " + date + " of " + monthName + " in " + year+". " + seconds + " seconds has passed since the last change in minutes.";
+}
+//time Update
+timeUpdate();
+let intervalTracker = setInterval(timeUpdate, 1000);
+
+
+
+//prompt player name
+let tuffName = prompt("What is your name?");
+const nameFix = tuffName.charAt(0).toUpperCase() + tuffName.slice(1).toLowerCase();
+
+
 
 // play button function
 function beginPlay(){
