@@ -11,9 +11,9 @@ let giveUpBtn = document.getElementById("giveUpBtn");
 let totalWins = document.getElementById("wins");
 let wins = 0;
 //averages
-let numScore = 0;
 let avgScore = document.getElementById("avgScore");
-let playGuess = 0; /// guesses kept while playing
+let totalGuess = 0;
+let playGuess = 0;
 
 //prompt player name
 let tuffName = prompt("What is your name?");
@@ -66,6 +66,8 @@ if(playerGuess === randNum){
    guessBtn.disabled = true;
    // enable play button
     playBtn.disabled = false;
+   // Update number of guesses
+    playGuess = playGuess + 1;
     // Average score Update
    scoreUpdate();
 }
@@ -110,8 +112,10 @@ if(diff <= 2){
 
 //function to update total scores and wins
 function scoreUpdate(){
-    numScore = (numScore* wins +playGuess)/(wins+1);
+    totalGuess += playGuess
     wins++;
-    avgScore.innerText = "Average Score: " + numScore;
+
+    let finalAvgScore = totalGuess/wins;
+    avgScore.innerText = "Average Score: " + finalAvgScore;
     totalWins.innerText = "Total wins: " + wins;
 }
