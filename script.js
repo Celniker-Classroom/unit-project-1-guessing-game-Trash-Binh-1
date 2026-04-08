@@ -112,10 +112,11 @@ if(diff <= 2){
 
 //function to update total scores and wins
 function scoreUpdate(){
-    totalGuess += playGuess
     wins++;
+    totalGuess += playGuess
 
     let finalAvgScore = totalGuess/wins;
     avgScore.innerText = "Average Score: " + finalAvgScore;
     totalWins.innerText = "Total wins: " + wins;
+    playGuess = 0;
 }
