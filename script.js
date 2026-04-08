@@ -6,6 +6,7 @@ btn.addEventListener("click", beginPlay);
 
 
 //universial functions
+//buttons
 let randNum;
 let guessBtn = document.getElementById("guessBtn");
     guessBtn.addEventListener("click", guessValue);
@@ -16,9 +17,11 @@ let wins = 0;
 let avgScore = document.getElementById("avgScore");
 let totalGuess = 0;
 let playGuess = 0;
-
-
-// current dates and suffixes
+//record timer
+let start = new Date().getTime();
+let elapsedTime = 0;
+let storeTime = [];
+// current dates and suffixes in a function
 function timeUpdate(){
 let now = new Date();
 let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -42,11 +45,9 @@ let seconds = now.getSeconds();
 let currentDate = document.getElementById("date");
 currentDate.textContent = "It is the " + date + " of " + monthName + " in " + year+". " + seconds + " seconds has passed since the last change in minutes.";
 }
-//time Update
+//time Update function updates
 timeUpdate();
 let intervalTracker = setInterval(timeUpdate, 1000);
-
-
 
 //prompt player name
 let tuffName = prompt("What is your name?");
@@ -62,6 +63,8 @@ guessBtn.disabled = false;
 giveUpBtn.disabled = false;
 //disable play button
 btn.disabled = true;
+//record timer
+timerRecord();
 //easy mode
 if(document.getElementById("e").checked){
     //generate the number
@@ -103,6 +106,8 @@ if(playerGuess === randNum){
     playGuess++;
     // Average score Update
    scoreUpdate();
+   // update average and fastest time
+   timerCalc();
 }
 // low guess
 else if(playerGuess < randNum){
@@ -152,4 +157,35 @@ function scoreUpdate(){
     avgScore.innerText = "Average Score: " + finalAvgScore.toFixed(2);
     totalWins.innerText = "Total wins: " + wins;
     playGuess = 0;
+}
+
+// function to keep the time
+function timerRecord(){
+    start = new Date().getTime();
+    elapsedTime = 0;
+}
+
+// calculations for avarage and fast times
+function timerCalc(){
+    let timeNow = new Date().getTime();
+    let elasped = (timeNow - start)/(elapsedTime + 1000);
+    storeTime.push(elasped);
+
+    // average update
+    let sum = 0;
+    for (let i = 0; i < storeTime.length; i++){
+        sum += storeTime[i];
+    }
+    let average = sum/storeTime.length;
+    document.getElementById('avgTime').textContent = "Average Time: " + average + " seconds";
+
+    // fastest game
+    let min = storeTime[0];
+    for (let i = 1; i < storeTime.length; i++){ // find min time
+        if(storeTime[i] < min ){
+            min = storeTime[i];
+        }
+
+    }
+    document.getElementById('fastest').textContent = "Fastest Game: " + min + " seconds";
 }
