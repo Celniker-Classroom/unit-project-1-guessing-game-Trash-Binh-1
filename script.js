@@ -17,8 +17,8 @@ let wins = 0;
 let avgScore = document.getElementById("avgScore");
 let totalGuess = 0;
 let playGuess = 0;
-//update userboard
-
+// scores array
+let scores = [];
 //record timer
 let start = new Date().getTime();
 let elapsedTime = 0;
@@ -149,8 +149,16 @@ if(diff <= 2){
     playGuess = playGuess + 1;
     // change text to high
      document.getElementById('msg').textContent = "Too High!" + "(" + temp + ")";
-} 
 }
+}
+
+
+    
+
+
+    
+
+
 
 //function to update total scores and wins
 function scoreUpdate(){
@@ -160,8 +168,22 @@ function scoreUpdate(){
     let finalAvgScore = totalGuess/wins;
     avgScore.innerText = "Average Score: " + finalAvgScore.toFixed(1);
     totalWins.innerText = "Total wins: " + wins;
-    playGuess = 0;
-}
+    
+// update leadearboard
+    scores.push(playGuess);
+    scores.sort(function(a,b){return a-b;});
+
+    let leaderboard = document.getElementsByName('leaderboard');
+    for(let i=0; i < leaderboard.length; i++){
+        if(i< scores.length){
+            leaderboard[i].textContent = scores[i];}
+            else{
+                leaderboard[i].textContent = "--";
+            }
+        }
+        playGuess = 0;
+    }
+
 
 // function to keep the time
 function timerRecord(){
@@ -192,9 +214,6 @@ function timerCalc(){
 
     }
     document.getElementById('fastest').textContent = "Fastest Game: " + min + " seconds";
-}
-
-// //function to update the leaderboard
-function leaderboardUpdate(){
 
 }
+
