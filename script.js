@@ -103,7 +103,7 @@ if(playerGuess === randNum){
    // enable play button
     btn.disabled = false;
    // Update number of guesses
-    playGuess++;
+    playGuess=playGuess+1;
     // Average score Update
    scoreUpdate();
    // update average and fastest time
@@ -154,7 +154,7 @@ function scoreUpdate(){
     totalGuess += playGuess
 
     let finalAvgScore = totalGuess/wins;
-    avgScore.innerText = "Average Score: " + finalAvgScore.toFixed(2);
+    avgScore.innerText = "Average Score: " + finalAvgScore.toFixed(1);
     totalWins.innerText = "Total wins: " + wins;
     playGuess = 0;
 }
