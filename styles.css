@@ -7,7 +7,26 @@ body{
 
 h3{
     font-size: larger;
-    font-weight:900 px;
+    font-weight:800px;
     color: rgb(255, 54, 54);
 }
+
+.contLeaderboard{
+    margin:auto;
+    margin-top: 20px;
+    width: 80%;
+    height: auto;
+    border: 2px solid palegoldenrod;
+    background-color: rgb(242, 239, 207);
+}
+
+.statboard{
+margin:auto;
+width: 80%;
+height: auto;
+border: 2px solid palegoldenrod;
+background-color: rgb(242, 239, 207);
+} 
+
+
     
