@@ -176,13 +176,14 @@ function scoreUpdate(){
     scores.sort(function(a,b){return a-b;});
 
     let leaderboard = document.getElementsByName('leaderboard');
+    if (leaderboard.length > 0){
     for(let i=0; i < leaderboard.length; i++){
         if(i< scores.length){
             leaderboard[i].textContent = scores[i];}
             else{
                 leaderboard[i].textContent = "--";
             }
-        }
+        }}
         playGuess = 0;
     }
 
