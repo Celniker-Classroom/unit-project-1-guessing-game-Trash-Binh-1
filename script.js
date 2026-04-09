@@ -198,7 +198,7 @@ function timerRecord(){
 // calculations for avarage and fast times
 function timerCalc(){
     let timeNow = new Date().getTime();
-    let elasped = (timeNow - start)/(elapsedTime + 1000);
+    let elasped = (timeNow - start)/(1000);
     storeTime.push(elasped);
 
     // average update
