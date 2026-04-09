@@ -90,6 +90,10 @@ else if(document.getElementById("h").checked){
     randNum = Math.floor(Math.random()*range) + 1; 
     // change text to hard guess
     document.getElementById('msg').textContent= "Guess the number between 1-100, " + nameFix;}
+// disable buttons
+document.getElementById("e").disabled = true;
+document.getElementById("m").disabled = true;
+document.getElementById("h").disabled = true;
 }
     
 // Guess the number function
@@ -224,7 +228,6 @@ function timerCalc(){
 //function to giveup
 
 function giveUp(){
-wins++;
     // disable guess btn and give up btn
     guessBtn.disabled = true;
      giveUpBtn.disabled = true;
@@ -232,6 +235,10 @@ wins++;
  
 document.getElementById('msg').textContent= "You gave up! Number was " + randNum;
  
+document.getElementById("e").disabled = false;
+document.getElementById("m").disabled = false;
+document.getElementById("h").disabled = false;
+
 //update score to range   
     //easy mode
 if(document.getElementById("e").checked){
