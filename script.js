@@ -14,6 +14,7 @@ let giveUpBtn = document.getElementById("giveUpBtn");
     giveUpBtn.addEventListener("click", giveUp);
 let totalWins = document.getElementById("wins");
 let wins = 0;
+let range = 0;
 //averages
 let avgScore = document.getElementById("avgScore");
 let totalGuess = 0;
@@ -71,21 +72,21 @@ timerRecord();
 //easy mode
 if(document.getElementById("e").checked){
     //generate the number
-    let range = 3;
+    range = 3;
     randNum = Math.floor(Math.random()*range) + 1; 
     // change text to easy guess
     document.getElementById('msg').textContent= "Guess the number between 1-3, " + nameFix;}
 //medium mode
 if(document.getElementById("m").checked){
     //generate the number
-    let range = 10;
+    range = 10;
     randNum = Math.floor(Math.random()*range) + 1; 
     // change text to med guess
     document.getElementById('msg').textContent= "Guess the number between 1-10, " + nameFix;}
 //hard mode
 if(document.getElementById("h").checked){
     //generate the number
-    let range = 100;
+    range = 100;
     randNum = Math.floor(Math.random()*range) + 1; 
     // change text to hard guess
     document.getElementById('msg').textContent= "Guess the number between 1-100, " + nameFix;}
@@ -233,21 +234,21 @@ document.getElementById('msg').textContent= "You gave up! Number was " + randNum
     //easy mode
 if(document.getElementById("e").checked){
     //generate the number
-    let range = 3;
+    range = 3;
     playGuess = range;
 }
   
 //medium mode
 if(document.getElementById("m").checked){
     //generate the number
-    let range = 10; 
+    range = 10; 
     playGuess = range;
     }
 
 //hard mode
 if(document.getElementById("h").checked){
     //generate the number
-    let range = 100;
+    range = 100;
     playGuess = range;
 
 }
