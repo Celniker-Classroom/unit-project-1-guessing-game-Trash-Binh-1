@@ -22,11 +22,27 @@ h3{
 
 .statboard{
 margin:auto;
+margin-top: 20px;
 width: 80%;
 height: auto;
 border: 2px solid palegoldenrod;
 background-color: rgb(242, 239, 207);
 } 
 
+.play{
+margin:auto;
+margin-top: 20px;
+width: 80%;
+height: auto;
+border: 2px solid palegoldenrod;
+background-color: rgb(242, 239, 207);
+} 
 
+.level{
+margin:auto;
+width: 80%;
+height: auto;
+border: 2px solid palegoldenrod;
+background-color: rgb(242, 239, 207);
+} 
     
