@@ -168,8 +168,8 @@ function scoreUpdate(){
     totalGuess += playGuess
 
     let finalAvgScore = totalGuess/wins;
-    avgScore.innerText = "Average Score: " + finalAvgScore.toFixed(1);
-    totalWins.innerText = "Total wins: " + wins;
+    avgScore.textContent = "Average Score: " + finalAvgScore.toFixed(1);
+    totalWins.textContent = "Total wins: " + wins;
     
 // update leadearboard
     scores.push(playGuess);
