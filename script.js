@@ -224,7 +224,8 @@ function timerCalc(){
 //function to giveup
 
 function giveUp(){
-// disable guess btn and give up btn
+wins++;
+    // disable guess btn and give up btn
     guessBtn.disabled = true;
      giveUpBtn.disabled = true;
      btn.disabled = false;
