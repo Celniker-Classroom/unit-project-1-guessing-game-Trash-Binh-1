@@ -252,6 +252,7 @@ if(document.getElementById("h").checked){
     playGuess = range;
 
 }
-
+timerCalc();
 scoreUpdate();
+
 }
