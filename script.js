@@ -77,14 +77,14 @@ if(document.getElementById("e").checked){
     // change text to easy guess
     document.getElementById('msg').textContent= "Guess the number between 1-3, " + nameFix;}
 //medium mode
-if(document.getElementById("m").checked){
+else if(document.getElementById("m").checked){
     //generate the number
     range = 10;
     randNum = Math.floor(Math.random()*range) + 1; 
     // change text to med guess
     document.getElementById('msg').textContent= "Guess the number between 1-10, " + nameFix;}
 //hard mode
-if(document.getElementById("h").checked){
+else if(document.getElementById("h").checked){
     //generate the number
     range = 100;
     randNum = Math.floor(Math.random()*range) + 1; 
@@ -239,14 +239,14 @@ if(document.getElementById("e").checked){
 }
   
 //medium mode
-if(document.getElementById("m").checked){
+else if(document.getElementById("m").checked){
     //generate the number
     range = 10; 
     playGuess = range;
     }
 
 //hard mode
-if(document.getElementById("h").checked){
+ else if(document.getElementById("h").checked){
     //generate the number
     range = 100;
     playGuess = range;
