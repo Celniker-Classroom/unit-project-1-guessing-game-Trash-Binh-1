@@ -11,6 +11,7 @@ let randNum;
 let guessBtn = document.getElementById("guessBtn");
     guessBtn.addEventListener("click", guessValue);
 let giveUpBtn = document.getElementById("giveUpBtn");
+    giveUpBtn.addEventListener("click", giveUp);
 let totalWins = document.getElementById("wins");
 let wins = 0;
 //averages
@@ -185,6 +186,7 @@ function scoreUpdate(){
     }
 
 
+
 // function to keep the time
 function timerRecord(){
     start = new Date().getTime();
@@ -217,3 +219,38 @@ function timerCalc(){
 
 }
 
+//function to giveup
+
+function giveUp(){
+// disable guess btn and give up btn
+    guessBtn.disabled = true;
+     giveUpBtn.disabled = true;
+     btn.disabled = false;
+ 
+document.getElementById('msg').textContent= "You gave up! Number was " + randNum;
+ 
+//update score to range   
+    //easy mode
+if(document.getElementById("e").checked){
+    //generate the number
+    let range = 3;
+    playGuess = range;
+}
+  
+//medium mode
+if(document.getElementById("m").checked){
+    //generate the number
+    let range = 10; 
+    playGuess = range;
+    }
+
+//hard mode
+if(document.getElementById("h").checked){
+    //generate the number
+    let range = 100;
+    playGuess = range;
+
+}
+
+scoreUpdate();
+}
