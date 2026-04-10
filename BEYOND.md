@@ -6,4 +6,4 @@ Additional features I added!!
 
 -added confetti effect for when the player wins
 
--added extreme level for guesing game
+-added extreme level for guessing game
