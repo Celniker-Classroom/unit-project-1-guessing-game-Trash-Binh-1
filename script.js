@@ -4,7 +4,6 @@ let btn = document.getElementById("playBtn");
 btn.addEventListener("click", beginPlay);
 
 
-
 //universial functions
 //buttons
 let randNum;
@@ -53,6 +52,12 @@ currentDate.textContent = "It is the " + date + " of " + monthName + " in " + ye
 timeUpdate();
 let intervalTracker = setInterval(timeUpdate, 1000);
 
+
+//audio
+const wrong = new Audio('wrong.mp3');
+const correct = new Audio('correct.mp3');
+const giveup = new Audio('giveup.mp3');
+const playAudio = new Audio('playAudio.mp3');
 //prompt player name
 let tuffName = prompt("What is your name?");
 const nameFix = tuffName.charAt(0).toUpperCase() + tuffName.slice(1).toLowerCase();
@@ -69,6 +74,9 @@ giveUpBtn.disabled = false;
 btn.disabled = true;
 //record timer
 timerRecord();
+
+// play audio
+playAudio.play();
 //easy mode
 if(document.getElementById("e").checked){
     //generate the number
@@ -90,10 +98,17 @@ else if(document.getElementById("h").checked){
     randNum = Math.floor(Math.random()*range) + 1; 
     // change text to hard guess
     document.getElementById('msg').textContent= "Guess the number between 1-100, " + nameFix;}
+else if(document.getElementById("x").checked){
+    //generate the number
+    range = 1000;
+    randNum = Math.floor(Math.random()*range) + 1; 
+    // change text to hard guess
+    document.getElementById('msg').textContent= "Guess the number between 1-1000, " + nameFix;}
 // disable buttons
 document.getElementById("e").disabled = true;
 document.getElementById("m").disabled = true;
 document.getElementById("h").disabled = true;
+document.getElementById("x").disabled = true;
 }
     
 // Guess the number function
@@ -104,10 +119,15 @@ let playerGuess = Number(document.getElementById("guess").value);
 let diff;
 // correct guess
 if(playerGuess === randNum){
+     //audio
+   correct.play();
+   //confetti affect
+   confetti();
     // change text to correct
      document.getElementById('msg').textContent = "Correct " + nameFix + "!";
     // Disable guess button
    guessBtn.disabled = true;
+   giveUpBtn.disabled =true;
    // enable play button
     btn.disabled = false;
    // Update number of guesses
@@ -118,6 +138,7 @@ if(playerGuess === randNum){
    timerCalc();
    // update the leaderboard
    leaderboardUpdate();
+  
 }
 // low guess
 else if(playerGuess < randNum){
@@ -137,6 +158,7 @@ if(diff <= 2){
     playGuess = playGuess + 1;
     // change text to low
     document.getElementById('msg').textContent = "Too Low! " + "(" + temp + ")";
+    wrong.play();
 }
 // high guess
 else if(playerGuess > randNum){
@@ -155,7 +177,8 @@ if(diff <= 2){
     playGuess = playGuess + 1;
     // change text to high
      document.getElementById('msg').textContent = "Too High!" + "(" + temp + ")";
-}
+    wrong.play();
+    }
 }
 
 
@@ -229,15 +252,17 @@ function timerCalc(){
 
 function giveUp(){
     // disable guess btn and give up btn
+   
     guessBtn.disabled = true;
      giveUpBtn.disabled = true;
      btn.disabled = false;
- 
+  giveup.play();
 document.getElementById('msg').textContent= "You gave up! Number was " + randNum;
  
 document.getElementById("e").disabled = false;
 document.getElementById("m").disabled = false;
 document.getElementById("h").disabled = false;
+document.getElementById("x").disabled = false;
 
 //update score to range   
     //easy mode
@@ -261,7 +286,13 @@ else if(document.getElementById("m").checked){
     playGuess = range;
 
 }
+//extreme mode
+ else if(document.getElementById("x").checked){
+    //generate the number
+    range = 1000;
+    playGuess = range;}
+
 timerCalc();
 scoreUpdate();
 
-}
+ }

@@ -38,6 +38,7 @@ border: 2px solid palegoldenrod;
 background-color: rgb(242, 239, 207);
 } 
 
+
 .level{
 margin:auto;
 width: 80%;
@@ -45,4 +46,9 @@ height: auto;
 border: 2px solid palegoldenrod;
 background-color: rgb(242, 239, 207);
 } 
-    
+button{
+    background-color: rgb(216, 245, 255);
+    border: 2px solid rgb(146, 202, 255);
+    color:rgb(146, 202, 255);
+    font-family: 'Jersey 15', sans-serif;
+}
